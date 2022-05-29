@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalEnergies Power monitoring System</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
+</head>
+<body>
+    <div class="container">
+        <!--Design the side bar -->
+        <aside>
+          <div class="top">
+               <img src="../images/index.png"  class="logo" alt="Logo"><br>
+             
+               <div class="close">
+                  <span class="material-icons-sharp">
+                      close
+                      </span>
+              </div>
+          </div>
+          <div class="sidebar">
+            <a href="../dashboard.html">
+               <span class="material-icons-sharp">
+                   home
+                   </span>
+               <h3> Home</h3>
+            </a><br>
+            <a href="stations.html">
+              <span class="material-icons-sharp">
+                  business
+                  </span>
+              <h3>Stations</h3>
+          </a><br>
+            <a href="devices.html">
+               <span class="material-icons-sharp">
+                   devices
+                   </span>
+               <h3> Devices</h3>
+           </a><br>
+           <a href="reports.html">
+               <span class="material-icons-sharp">
+                   summarize
+                   </span>
+               <h3> Reports</h3>
+           </a><br>
+           
+           <a href="about.html">
+               <span class="material-icons-sharp">
+                   description
+                   </span>
+               <h3> About SPMCS</h3>
+           </a><br>
+           <a href="#">
+            <span class="material-icons-sharp">
+                settings
+                </span>
+            <h3>Settings</h3>
+        </a><br>
+           <a href="#" class="last-child">
+               <span class="material-icons-sharp">
+                   logout
+                   </span>
+               <h3>Log Out</h3>
+           </a><br>
+       </div>
+      </aside>
+        <!--End of the side bar-->
+        <!--Designing the main section-->
+        <div class="middle">
+          <div class="head">
+            <h2 class="banner">Smart Power Monitoring and Control System</span></h2>
+            <div class="top">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                account_circle
+                                </span>
+                                <h3>Welcome,Teddy</h3>
+                        </a>
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                notifications
+                                </span>
+                                <h3>Notifications</h3>
+                        </a>
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                manage_accounts
+                                </span> 
+                                <h3>Manage Accounts</h3>
+                        </a>
+                </div>
+          </div>
+
+            <div class="mid">
+              <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">Click here to browse devices</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#">Device 1, Station 1</a>
+                    <a href="#">Device 2, Station 1</a>
+                    <a href="#">Device 1, Station 2</a>
+                    <a href="#">Device 2. Station 2</a>
+                    <a href="#">Device 1, station 3</a>
+                    <a href="#">Device 2, Station 3</a>
+                    <a href="#">Device 3, Station 3</a>
+                    <a href="#">Add new device</a>
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div class="col-12">
+                    <!-- interactive chart -->
+                    <div class="card card-primary card-outline">
+                      <div class="card-header">
+                        <h3 class="card-title">
+                          <i class="far fa-chart-bar"></i>
+                          Flow of Current against Input Voltage: Device 1, Station 1
+                        </h3>
+        
+                        <div class="card-tools">
+                          Real Time Switch
+                          <div class="btn-group" id="realtime" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm active" data-toggle="on">On</button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="off">Off</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div id="interactive" style="height: 300px;"></div>
+                      </div>
+                      <!-- /.card-body-->
+                    </div>
+                    <!-- /.card -->
+        
+                  </div>
+                  <!-- /.col -->
+                </div>
+
+
+          </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+      <strong>&copy; 2022 Warriors</strong> | All rights reserved.
+    </footer>
+    <script src="../plugins/dashboard.js"></script>
+    <script src="../plugins/jquery.min.js"></script>
+    <script src="../plugins/flot/jquery.flot.js"></script>
+    <script src="../plugins/flot/jquery.flot.resize.js"></script>
+
+    <script>
+        $(function () {
+          /*
+           * Flot Interactive Chart
+           * -----------------------
+           */
+          // We use an inline data source in the example, usually data would
+          // be fetched from a server
+          var data        = [],
+              totalPoints = 100
+      
+          function getRandomData() {
+      
+            if (data.length > 0) {
+              data = data.slice(1)
+            }
+      
+            // Do a random walk
+            while (data.length < totalPoints) {
+      
+              var prev = data.length > 0 ? data[data.length - 1] : 50,
+                  y    = prev + Math.random() * 10 - 5
+      
+              if (y < 0) {
+                y = 0
+              } else if (y > 100) {
+                y = 100
+              }
+      
+              data.push(y)
+            }
+      
+            // Zip the generated y values with the x values
+            var res = []
+            for (var i = 0; i < data.length; ++i) {
+              res.push([i, data[i]])
+            }
+      
+            return res
+          }
+      
+          var interactive_plot = $.plot('#interactive', [
+              {
+                data: getRandomData(),
+              }
+            ],
+            {
+              grid: {
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+              },
+              series: {
+                color: '#3c8dbc',
+                lines: {
+                  lineWidth: 2,
+                  show: true,
+                  fill: true,
+                },
+              },
+              yaxis: {
+                min: 0,
+                max: 100,
+                show: true
+              },
+              xaxis: {
+                show: true
+              }
+            }
+          )
+      
+          var updateInterval = 500 //Fetch data ever x milliseconds
+          var realtime       = 'on' //If == to on then fetch data every x seconds. else stop fetching
+          function update() {
+      
+            interactive_plot.setData([getRandomData()])
+      
+            // Since the axes don't change, we don't need to call plot.setupGrid()
+            interactive_plot.draw()
+            if (realtime === 'on') {
+              setTimeout(update, updateInterval)
+            }
+          }
+      
+          //INITIALIZE REALTIME DATA FETCHING
+          if (realtime === 'on') {
+            update()
+          }
+          //REALTIME TOGGLE
+          $('#realtime .btn').click(function () {
+            if ($(this).data('toggle') === 'on') {
+              realtime = 'on'
+            }
+            else {
+              realtime = 'off'
+            }
+            update()
+          })
+      
+          
+          
+        })
+      
+        /*
+         * Custom Label formatter
+         * ----------------------
+         */
+        function labelFormatter(label, series) {
+          return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+            + label
+            + '<br>'
+            + Math.round(series.percent) + '%</div>'
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalEnergies Power monitoring System</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body>
+    <div class="container">
+        <!--Design the side bar -->
+        <aside>
+          <div class="top">
+               <img src="../images/index.png"  class="logo" alt="Logo"><br>
+             
+               <div class="close">
+                  <span class="material-icons-sharp">
+                      close
+                      </span>
+              </div>
+          </div>
+          <div class="sidebar">
+            <a href="../dashboard.html">
+               <span class="material-icons-sharp">
+                   home
+                   </span>
+               <h3> Home</h3>
+            </a><br>
+            <a href="stations.html">
+              <span class="material-icons-sharp">
+                  business
+                  </span>
+              <h3>Stations</h3>
+          </a><br>
+            <a href="devices.html">
+               <span class="material-icons-sharp">
+                   devices
+                   </span>
+               <h3> Devices</h3>
+           </a><br>
+           <a href="reports.html">
+               <span class="material-icons-sharp">
+                   summarize
+                   </span>
+               <h3> Reports</h3>
+           </a><br>
+           
+           <a href="about.html">
+               <span class="material-icons-sharp">
+                   description
+                   </span>
+               <h3> About SPMCS</h3>
+           </a><br>
+           <a href="#">
+            <span class="material-icons-sharp">
+                settings
+                </span>
+            <h3>Settings</h3>
+        </a><br>
+           <a href="#" class="last-child">
+               <span class="material-icons-sharp">
+                   logout
+                   </span>
+               <h3>Log Out</h3>
+           </a><br>
+       </div>
+      </aside>
+        <!--End of the side bar-->
+        <!--Designing the main section-->
+        <div class="middle">
+          <div class="head">
+            <h2 class="banner">Smart Power Monitoring and Control System</span></h2>
+            <div class="top">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                account_circle
+                                </span>
+                                <h3>Welcome,Teddy</h3>
+                        </a>
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                notifications
+                                </span>
+                                <h3>Notifications</h3>
+                        </a>
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                manage_accounts
+                                </span> 
+                                <h3>Manage Accounts</h3>
+                        </a>
+                </div>
+          </div>
+
+
+            <div class="mid">
+              <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">Click here to browse stations</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#">Station 1</a>
+                    <a href="#">Station 2</a>
+                    <a href="#">Station 3</a>
+                    <a href="#">Register new station</a>
+                  </div>
+              </div>
+              
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Registered stations and devices linked to them</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Station Name</th>
+                      <th>Station Location</th>
+                      <th>Device Name</th>
+                      <th>Date Registered</th>
+                      <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 1</td>
+                      <td>29/05/2022</td>
+                      <td>Active</td>
+                    </tr>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 2</td>
+                      <td>29/05/2022</td>
+                      <td>Active</td>
+                    </tr>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 3</td>
+                      <td>29/05/2022</td>
+                      <td>Active</td>
+                    </tr>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 4</td>
+                      <td>29/05/2022</td>
+                      <td>Deactivated</td>
+                    </tr>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 5</td>
+                      <td>29/05/2022</td>
+                      <td>Active</td>
+                    </tr>
+                    <tr>
+                      <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 6</td>
+                      <td>29/05/2022</td>
+                      <td>Deactivated</td>
+                    </tr>
+                    <tr>
+                     <td>Station 1</td>
+                      <td>Hoima
+                      </td>
+                      <td>Device 7</td>
+                      <td>29/05/2022</td>
+                      <td>Active</td>
+                    </tr>    
+                    
+                                        
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+
+          </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+      <strong>&copy; 2022 Warriors</strong> | All rights reserved.
+    </footer>
+    <script src="../plugins/dashboard.js"></script>
+    <script src="../plugins/jquery.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</body>
+</html>
